@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
+import ru.gildo.application.model.entity.enums.ExecutionResult;
 import ru.gildo.application.model.entity.enums.TransactionType;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Table(name = "transactions")
 public class Transaction {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
@@ -36,16 +37,22 @@ public class Transaction {
     private TransactionType transactionType;
 
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "execution_result")
+    private ExecutionResult executionResult;
+
     @ManyToOne
-    @JoinColumn(name = "sender",referencedColumnName = "id")
+    @JoinColumn(name = "sender_id",referencedColumnName = "id")
     private Account senderAccount;
 
     @ManyToOne
-    @JoinColumn(name = "receiver",referencedColumnName = "id")
+    @JoinColumn(name = "receive_id",referencedColumnName = "id")
     private Account receiverAccount;
 
-    @OneToMany(mappedBy = "transaction")
-    private Set<Order> orders;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id",nullable = false)
+    private Order order;
 
 
 }

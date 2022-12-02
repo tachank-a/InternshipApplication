@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
@@ -42,7 +42,6 @@ public class Order {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateOfCreation;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @OneToOne(mappedBy = "order")
     private Transaction transaction;
 }
