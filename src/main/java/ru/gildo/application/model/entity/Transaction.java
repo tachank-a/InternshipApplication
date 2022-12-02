@@ -42,12 +42,10 @@ public class Transaction {
     @Column(name = "execution_result")
     private ExecutionResult executionResult;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "sender_id",referencedColumnName = "id")
     private Account senderAccount;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "receive_id",referencedColumnName = "id")
     private Account receiverAccount;
