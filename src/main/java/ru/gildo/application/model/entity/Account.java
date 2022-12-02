@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

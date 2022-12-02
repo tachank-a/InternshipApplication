@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
