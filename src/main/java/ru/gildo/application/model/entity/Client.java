@@ -1,6 +1,6 @@
 package ru.gildo.application.model.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,11 +1,13 @@
 package ru.gildo.application.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
+
 import ru.gildo.application.model.entity.enums.TransactionType;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
