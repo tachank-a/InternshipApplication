@@ -1,6 +1,6 @@
 package ru.gildo.application.service;
 
-import ru.gildo.application.model.dto.ClientDTO;
+import ru.gildo.application.dto.ClientDTO;
 
 import java.util.List;
 import java.util.Optional;

@@ -11,7 +11,6 @@ import ru.gildo.application.model.entity.enums.TransactionType;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Getter
