@@ -9,6 +9,7 @@ import ru.gildo.application.model.repository.ClientRepository;
 import ru.gildo.application.service.ClientService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -24,8 +25,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO getClientById(long id) {
-        Client client = clientRepository.findById(id).get();
-        return mapper.toDTO(client);
+    public Optional<ClientDTO> getClientById(long id) {
+        return clientRepository.findById(id)
+                .map(client -> new ClientDTO(
+                        client.getId(),
+                        client.getFirstName(),
+                        client.getLastName(),
+                        client.getPatronymic())
+                );
     }
 }
