@@ -1,6 +1,7 @@
 package ru.gildo.application.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class ClientController {
 
     @GetMapping("/client/{id}")
     public ResponseEntity<ClientDTO> getClientById(@PathVariable long id){
-        return ResponseEntity.ok(clientService.getClientById(id));
+        return clientService.getClientById(id).map(clientDTO -> new ResponseEntity<>(clientDTO, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
